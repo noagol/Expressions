@@ -1,0 +1,61 @@
+My approach for the simplification:
+I created a functions to check the instance of the expression,
+isPlus, isSin...
+I add a function advancedSimplification to the Expression interface
+to support this simplify.
+In the function advancedSimplification i check every inner expression
+using the instance of function.
+Then i use down casting to get the inner expressions and simplify
+the expression using recursion.
+
+
+The advancedSimplification:
+
+Sin + Cos :
+
+sin(-x) = -sin(x)
+cos(-x) = cos(x)
+sin(x)^2.0 + cos(x)^2.0 = 1
+
+Plus :
+
+(a*x)+(a*x) = a*x
+(x*a)+(x*a) = a*x
+(a*x)+(x*a) = a*x
+(x*a)+(a*x) = a*x
+(x+y)+(x+y) = 2*(x + y)
+x+(-x) = 0
+
+Log :
+
+x^log(x, y) = y
+log((x+y),1) = 0
+log(x,(y^z)) = z*log(x, y)
+
+Pow :
+
+(x^y)^z = x^(y * z)
+(x+y)^1 = x + y
+(x+y)^0 = 1
+1^(x+y) = 1
+0^x = 0
+
+Neg :
+
+-(-x) = x
+-(-(x+y)) = x+y
+(-(x+y))/(-(x+z)) = (x+y)/(x+z)
+
+Minus :
+
+(-x)-(-y) = y-x
+(-x)-y = -(x+y)
+x-(-y) = x+y
+
+Div :
+
+0/(y+x) = 0
+
+Mult:
+
+a*(y+x) = (a*y)+(a*x)
